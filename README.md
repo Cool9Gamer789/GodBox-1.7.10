@@ -1,37 +1,36 @@
-# anatawa12's ForgeGradle 1.2 fork for Gradle 4.4.1+ - example project
+# GodBox Item
 
-This is an example mod using the [fork of ForgeGradle-1.2 made by anatawa12](https://github.com/anatawa12/ForgeGradle-1.2).
-This fork supports Gradle 4.4.1 and later. This example project uses Gradle 5.6.4.
+A Minecraft mod item that allows players to instantly duplicate and maximize stacks of items in their inventory.
 
-## How to use this example project
+## Features
 
-You can download this example project from [here](https://github.com/anatawa12/ForgeGradle-example/archive/master.zip), or use it as a template on Github.
-This project can be used as a replacement for Forge's 1.7.10 MDK.
+- **Item Duplication**: Right-click to duplicate the first item in your hotbar
+- **Stack Maximization**: All duplicated items are automatically set to their maximum stack size
+- **Inventory Filling**: Fills all empty slots in your inventory with the duplicated item
+- **Single Use**: Limited to 1 item per stack to prevent abuse
 
-## How to replace ForgeGradle 1.2. with anatawa12's fork
-Although this example project has some differences to Forge's 1.7.10 MDK, anatawa12's fork of ForgeGradle 1.2 can be used by most projects with only minimal changes to their Gradle build script.
+## How to Use
 
-Here is a list of changes to Forge's 1.7.10 MDK Gradle build script, to replace the official ForgeGradle 1.2 plugin with the fork. These changes are likely to work with most projects based on Forge's 1.7.10 MDK.
+### Finding the GodBox
+1. Open your inventory in Creative Mode
+2. Navigate to the **Tools** tab
+3. Look for the GodBox item (uses the "motherbox" texture)
 
-In the repositories block of the buildscript section, add jcenter, and switch the Forge maven to use HTTPS instead of HTTP:
-```diff
-     repositories {
-         mavenCentral()
-         maven {
-             name = "forge"
--            url = "http://files.minecraftforge.net/maven"
-+            url = "https://maven.minecraftforge.net/"
-         }
-```
+### Using the GodBox
+1. Place any item you want to duplicate in the **first slot** of your hotbar (leftmost slot)
+2. Hold the GodBox in your hand
+3. **Right-click** while holding the GodBox
+4. All empty slots in your inventory will be filled with the maximum stack size of your selected item
 
-Also in the dependencies block of the buildscript section, change the dependency on Forge's official ForgeGradle 1.2 to the fork:
-```diff
-     dependencies {
--        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
-+        classpath ('com.anatawa12.forge:ForgeGradle:1.2-1.1.+') {
-+            changing = true
-+        }
-     }
-```
+## Important Notes
+- Only works with the **first hotbar slot** (slot 0)
+- The first hotbar slot must contain an item (cannot be empty)
+- The first hotbar slot cannot contain the GodBox itself
+- Only fills **empty slots** - will not modify existing stacks
+- Works in both main inventory and hotbar slots (not the armor slots)
+- Server-side processing ensures multiplayer compatibility
 
-The Gradle wrapper should also be changed to use Gradle 4.4.1 or higher. <!--Currently, the plugin [does not support Gradle 6.x](https://github.com/anatawa12/ForgeGradle-1.2/issues/9), although this may change in the future. As such, the latest version of Gradle this plugin supports is Gradle 5.6.4.-->
+## Example
+1. Place 1 Diamond in your first hotbar slot
+2. Right-click with the GodBox
+3. All empty inventory slots will now contain 64 Diamonds (max stack size)
