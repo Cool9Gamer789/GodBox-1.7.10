@@ -22,10 +22,4 @@ public class GodBox
         godboxItem = new ItemGodBox();
         GameRegistry.registerItem(godboxItem, godboxItem.getUnlocalizedName());
     }
-
-    @EventHandler
-    public void init(FMLInitializationEvent event)
-    {
-        // WORK HERE
-    }
 }
